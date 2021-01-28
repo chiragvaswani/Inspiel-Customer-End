@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+nav {
+  text-align: right;
+  background: none;
+  min-height: 85px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 20;
+  transition: 0.35s all ease;
+
+}
+nav ul {
+  list-style: none;
+  padding: 2rem;
+  transition: 0.35s all ease;
+}
+nav ul li {
+  display: inline-block;
+  color:black;
+  padding: 0 1rem;
+  font-family: sans-serif;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+.scrolled {
+  min-height: 10px;
+  background: white;
+  transition: 0.35s all ease;
+  -webkit-box-shadow: 1px 3px 5px #d3d3d3;
+
+  
+}
+.scrolled ul {
+  padding: 1rem 2rem;
+  transition: 0.35s all ease;
+}
+.scrolled li {
+  color: rgb(53, 150, 240);
+  transition: 0.2s all ease-in-out;
+}

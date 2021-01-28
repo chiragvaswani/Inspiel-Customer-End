@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/css/Slot.css">
+    <title>Select Slot</title> 
+  </head>
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+
+    <nav class="navbar navbar-expand-lg navbar-light navbar-trans top">
+      <div class="container">
+        <a class="navbar-brand" href="#"
+          ><img class="logo" src="/css/logo.png"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">My Bookings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nl" href="profile.html">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="aboutUs.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>total</h3>
+    <h4>Morning</h4>
+    <%= morning  %>
+    <h4>Afternoon</h4>
+    <%= afternoon %>
+    <h4>Evening</h4>
+    <%= evening %>
+
+    <div class="y-appointment-wrapper">
+      <div class="appointment-notification"></div>
+        <form action="/slot" method="POST">
+          <fieldset class="field-set-reset">
+<!-- Could go here  -->
+                <legend class="title">Select Slot</legend>
+                  <div class="time-pick" data-ts-selected-id=-1>
+                   <section>
+
+                     <!-- <form action="/slot" method="POST"> -->
+                                <div class="time-slot morning">
+                                    <h3 class="slot-heading">morning</h3>
+                                    <% for (var slot of morning) {%>
+                                    <div class="slot">
+                                      <% if (booked.includes(slot)) {%>
+                                        <label class="time-slice disable" for="" option-id="0" >
+
+                                            <input type="checkbox" disabled class="disable" value="<%= slot %>" name="slots"
+                                            id = "8:00 - 9:00">
+                                            <%} else { %>
+                                              <label class="time-slice" for="<%= slot %>" option-id="0" >
+                                            <input type="checkbox" value="<%= slot %>" name="slots"
+                                            id = "8:00 - 9:00">
+                                            <% } %>
+                                            <span class="time-text"><%= slot %></span>
+                                        </label>
+                                        <!-- <label class="time-slice" for="" option-id="1"  >
+                                            <input type="checkbox"
+                                             name="slots" value="9:00 - 10:00" id="9:00 - 10:00" >
+                                            <span>9:00 - 10:00</span>
+                                        </label> -->
+                                    </div>
+                                    <% } %>
+                                  </div>
+                                <div class="time-slot afternoon">
+                                    <h3 class="slot-heading">afternoon</h3>
+                                    <% for (var slot of afternoon) {%>
+                                    <div class="slot">
+                                      <% if (booked.includes(slot)) {%>
+                                        <label class="time-slice disable" for="" option-id="2" >
+                                            <input
+                                            class="time-slice"
+                                            type="checkbox" disabled value="<%= slot %>" id="12:00 - 13:00" name="slots">
+                                            <% } else { %>
+                                            <label class="time-slice" for="" option-id="2" >
+                                            <input
+                                            class="time-slice"
+                                            type="checkbox" value="<%= slot %>" id="12:00 - 13:00" name="slots">
+                                              <% } %>
+                                            <span><%= slot %></span>
+                                        </label>
+                                        <!-- <label class="time-slice" for="" option-id="4">
+                                            <input type="checkbox">
+                                            <span>4:20p</span>
+                                        </label>
+                                        <label class="time-slice" for="" option-id="5">
+                                            <input type="checkbox" value="4:40p">
+                                            <span>4:40p</span>
+                                        </label> -->
+                                    </div>
+                                    <% } %>
+                                </div>
+                                 <div class="time-slot evening">
+                                    <h3 class="slot-heading">evening</h3>
+                                    <% for (var slot of evening) { %>
+                                    <div class="slot">
+                                      <% if (booked.includes(slot)) { %>
+                                        <label class="time-slice disable" for="" option-id="6" >
+                                            <input type="checkbox" class="disable" disabled name="slots" id='17:00 - 18:00' value="17:00 - 18:00">
+                                            <% } else { %>
+                                                <label class="time-slice" for="" option-id="6" >
+                                            <input type="checkbox" name="slots" id='17:00 - 18:00' value="17:00 - 18:00">
+                                            <% } %>
+                                            <span><%= slot %></span>
+                                        </label>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </section>
+                        </div>
+                    </fieldset>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+                    <button>Submit</button>
+                </form>
+            </div>
+    </body>
+</html>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script><script  src="/js/Slot.js"></script>
+  <script src="/js/Slot1.js"></script>
+
+  <script>
+    // function add(element) {
+    //  var ip =  document.getElementById(`${element}`)
+    //  if (ip.hasAttribute('checked')) ip.removeAttribute('checked');
+    //  else ip.setAttribute('checked', '')
+    // }
+
+    function addDate(id) {
+      var date = document.getElementById(id);
+      if (date.hasAttribute('checked')) date.removeAttribute('checked');
+      else date.setAttribute('checked', '');
+    }
+  </script>
+
+</body>
+</html>

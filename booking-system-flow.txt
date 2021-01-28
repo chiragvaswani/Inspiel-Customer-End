@@ -1,0 +1,70 @@
+Customer End Booking System Flow : 
+
+Login --> Dashboard (Select Sport) --> Show Courts of Selected Sport (Card Layout)
+                                            |
+                                            |--> Show Slots --> Payment Gateway--> confirmation & add to bookings collection
+
+
+
+## Court Card Contents 
+1. Image 
+2. Name
+3. Location 
+4. Description
+
+
+## Collections 
+1. Players/ Users
+2. Bookings 
+3. Courts 
+4. Coaches
+5. Court Owners 
+
+
+## Player Schema 
+1. Username -> unique
+2. First Name 
+3. Last Name 
+4. Email 
+5. Password  (Hashed)
+6. Contact Number 
+7. Address
+
+## Booking Schema 
+1. username
+2. Date 
+3. Court Name
+4. Owner username 
+5. Slot 
+6. Cost
+
+
+## Courts 
+1. Name 
+2. Sport 
+3. owner username  (sort of foreign key)
+4. Address (plot/flat no. , street, city, landmark)
+5. Image path
+6. Slots (array of slot datatype)
+
+
+## Coaches
+1. First Name 
+2. Last Name 
+3. Email 
+4. Sport
+5. Contact Number 
+6. Short Description of Coach 
+
+## Court Owners 
+1. Username -> unique
+2. First Name 
+3. Last Name 
+4. Email 
+5. Password  (Hashed)
+6. Contact Number 
+7. Name 
+8. Sport 
+9. owner username  (sort of foreign key)
+10. Address (plot/flat no. , street, city, landmark)
+11. Image path

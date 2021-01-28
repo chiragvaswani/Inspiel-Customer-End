@@ -1,0 +1,215 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  --primary: hsl(92, 76%, 73%);
+  --header-height: 4rem;
+  --bg-dark: hsl(0, 0%, 16%);
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  /* background-color: var(--primary); */
+  /* background-image: url("https://img.pngio.com/hd-background-shapes-png-shapes-design-background-png-shapes-background-png-1920_1100.png"); */
+  /* background-image: url("https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"); */
+  /* background: linear-gradient(
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url("https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"); */
+  background-image: url("../css/Background4.png");
+  /* background-repeat: no-repeat; */
+  background-size: contain;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+header {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+nav {
+}
+
+/* pretend this was a hamburger menu */
+header > nav {
+  display: none;
+}
+
+main {
+  /* main fills the rest of the page other than the header */
+  /* height: calc(100vh - var(--header-height)); */
+  /* all scrollable content is inside main */
+  /* overflow-y: scroll; */
+  border-radius: 2rem 2rem 0 0;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* so the last item doesn't hit the bottom of the scroll container */
+main > :last-child {
+  margin-bottom: 2rem;
+}
+
+main h1 {
+  /* display: none; */
+}
+
+@media (min-width: 40rem) {
+  header h1 {
+    /* display: none; */
+  }
+
+  header nav {
+    display: block;
+  }
+
+  /* Create 2 col layout so we can show image on right   */
+  /* .page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  } */
+
+  main {
+    border-radius: 0;
+  }
+
+  .page-bg {
+    /* background-image: url("https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg"); */
+    background-size: cover;
+  }
+
+  main h1 {
+    display: block;
+  }
+}
+
+/*
+  all children with a preceding sibling get space above
+  i.e. all but first child
+*/
+.stack > * + * {
+  margin-top: 1.5rem;
+}
+
+.card {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  /* background-color: rgb(104, 185, 23); */
+  /* background-color: #68b917; */
+  background-color: #fff;
+  width: 60%;
+  margin-left: 20%;
+  /* height: 150px; */
+}
+
+dl {
+  text-align: center;
+}
+
+.card > time {
+  display: inline-block;
+  border-radius: 1rem;
+  padding: 0.25rem 1rem;
+  background-color: #76de00;
+  color: black;
+  width: 200px;
+  /* margin-left: 35%; */
+}
+
+.card > dl {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card dt {
+  font-size: 0.875rem;
+}
+
+.card dd {
+  font-weight: bold;
+  padding: 1rem;
+}
+
+/* force the last list item to wrap to its own line */
+.card > dl > :last-child {
+  flex-basis: 100%;
+}
+
+.nav-item {
+  text-align: center;
+}
+
+@media (max-width: 619px) {
+  .card > time {
+    /* width: 60%; */
+  }
+  .card {
+    width: 80%;
+    margin-left: 10%;
+  }
+}
+
+.logo {
+  width: 200px;
+}
+
+.card:hover {
+  /* box-shadow: 2px 4px #888888; */
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.3s ease;
+}
+
+.card {
+  box-shadow: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.row {
+  margin-top: 15px;
+}
+
+.upcoming {
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 2px solid rgb(104, 185, 23);
+}
+
+.past {
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 2px solid rgb(255, 15, 23);
+}
+
+.past > time {
+  background-color: rgb(255, 15, 23);
+  color: white;
+}

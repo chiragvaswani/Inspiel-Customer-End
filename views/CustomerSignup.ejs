@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inspiel | Sign up</title>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="HandheldFriendly" content="true" />
+    <!-- CSS Link -->
+    <link rel="stylesheet" type="text/css" href="../css/loginOne.css" />
+    <!-- Font Link -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>New to Inspiel? Sign Up</h1>
+    <form method="POST" action="/customer/signup">
+      <div class="form">
+        <div class="tab-header">
+          <div class="active" style="font-size: 25px">Sign Up</div>
+        </div>
+        <div class="tab-content">
+          <div class="tab-body active">
+            <div class="form-element">
+              <input type="text" placeholder="First Name" name="firstName" />
+            </div>
+            <div class="form-element">
+              <input type="text" placeholder="Last Name" name="lastName" />
+            </div>
+            <div class="form-element">
+              <input type="email" placeholder="Email" />
+            </div>
+            <div class="form-element">
+              <input type="text" placeholder="Username" name="username" />
+            </div>
+            <div class="form-element">
+              <input type="password" placeholder="Password" name="password" />
+            </div>
+            <div class="form-element">
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                name="confirmPassword"
+              />
+            </div>
+            <div class="form-element">
+              <input
+                type="number"
+                placeholder="Contact Number"
+                name="contact"
+              />
+            </div>
+            <div class="form-element">
+              <input type="text" placeholder="Address" name="address" />
+            </div>
+            <div class="form-element">
+              <button>Sign Up</button>
+            </div>
+            <h5> Already a member? <a href="/customer/login">Sign in</a>
+          </div>
+        </div>
+      </div>
+    </form>
+    <h4><%= message %></h4>
+  </body>
+</html>

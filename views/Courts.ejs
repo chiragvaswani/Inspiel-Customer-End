@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courts</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/css/Courts.css" />
+  </head>
+  <body>
+
+
+    <!-- Navbar -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Navbar Begins-->
+
+    <div class="container-fluid p-0 navbar-container">
+      <nav class="navbar navbar-expand-lg navbar-light navbar-trans top">
+        <div class="container">
+          <a class="navbar-brand" href="#"
+            ><img class="logo" src="/css/logo.png"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nl" href="/customer/bookings">My Bookings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/customer/profile">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">Log out</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Navbar Ends -->
+
+
+    <% if (courts.length==0) { %>
+      <div class="body">
+      <h2>No courts for this sport</h2>
+      <% } %>
+      </div>
+
+    <% for (var court of courts) {%>
+    <div class="body">
+      <a href="#" link-id="0" target="_blank"> </a>
+      <div class="Container">
+        <div
+          class="topBanner"
+          style="
+            background-image: url('https://tigerturf.com/in/wp-content/uploads/2019/11/How-to-build-a-tennis-court.jpg');
+          "
+        >
+          <!-- Change image path to court.imagepath -->
+          <div class="topText"></div>
+        </div>
+        <div class="underBanner">
+          <div class="text">
+            <div class="header">
+              <h3><%= court.name %></h3>
+            </div>
+            <div class="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              maximus ex ac sapien varius, in faucibus nulla accumsan. si risus,
+              ac mattis quam semper rutrum
+            </div>
+          </div>
+          <div class="deviceContainer">
+            <br />
+            <!-- <span class="star-rating">
+              <span data-star-rating="1" class="fa fa-star gold"></span>
+              <span data-star-rating="2" class="fa fa-star gold"></span>
+              <span data-star-rating="3" class="fa fa-star gold"></span>
+              <span data-star-rating="4" class="fa fa-star gold"></span>
+              <span data-star-rating="5" class="fa fa-star"></span>
+            </span> -->
+
+
+
+             <span
+              ><i class="fa fa-map-marker-alt"></i>
+              <span class="description"> <%= court.address.street %>, <%= court.address.city%></span>
+
+            <br />
+            <div class="buttonContainer">
+              <a
+                class="buttonLink invertedButtonLink"
+                link-id="0"
+                 href="/customer/court/<%= court.name %>/<%= court.sport %>"
+              >
+                Read More
+              </a>
+              <a
+                class="buttonLink invertedButtonLink"
+                href="https://itunes.apple.com/app/apple-store/id1109425556?pt=1374442&amp;ct=newsletter_april_2017&amp;mt=8&amp;from_email=sample_774&amp;referrer=sample_774&amp;user_id=b12d6f1fcbf91544e85ccda3d62586d9b4f5f852MjYwNjY5MTQ3"
+                link-id="0"
+                target="_blank"
+              >
+                Book now
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </body>
+</html>

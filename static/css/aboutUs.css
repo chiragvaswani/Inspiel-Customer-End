@@ -1,0 +1,137 @@
+body {
+
+	background: #ddd;
+}
+
+/*Info CSS*/
+
+.info-area {
+
+	padding: 5% 10% 0% 10%;
+}
+
+.about-us {
+
+	font-size: 75px;
+	font-weight: normal;
+	letter-spacing: 2px;
+	padding-bottom: 5%;
+	font-family: 'Russo One', sans-serif;
+}
+
+.info-para {
+
+	letter-spacing: 1px;
+}
+
+/*CARDS CSS*/
+
+.profile-area {
+
+	padding: 80px 0;
+}
+
+.card {
+
+	box-shadow: 0 0 20px rgba(0,0,0,0.2);
+	overflow: hidden;
+	border-radius: 15px; 
+	margin-bottom: 40px;
+}
+
+.img1 img {
+
+	height: 200px;
+	width: 100%;
+}
+
+.img2 img {
+
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 1;
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	border: 7px solid #fff;
+	margin-top: -80px;
+}
+
+.card:hover .img2 img{
+
+	/*border-color: red;*/
+	text-align: center;
+}
+
+.main-text {
+
+	padding: 30px 0;
+	text-align: center;
+}
+
+.main-text h2 {
+
+	text-transform: uppercase;
+	font-weight: 900;
+	font-size: 20px;
+	margin: 0 0 20px;
+}
+
+.socials {
+
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.socials i {
+
+	font-size: 20px;
+  	color: #000000;
+	padding: 0 10px;
+}
+
+.socials i:hover {
+
+	color: rgb(104, 185, 23);;
+}
+
+/*Footer CSS*/
+
+.darken-3{
+  background-color: #f1f1e8;
+}
+
+.footer-copyright
+{
+  background-color: rgba(0,0,0,0.15);
+}
+
+.fa
+{
+  color: rgb(104, 185, 23);
+}
+
+.line
+{
+  width: 5rem;
+  border: 1px solid green;
+}
+
+.hero-image {
+  width: 40vw;
+  margin-left: 100px;
+  margin-top: 35vh;
+}
+
+.tagline-animate {
+  -webkit-animation: fadeIn 7s; /* Safari 4+ */
+  -moz-animation:    fadeIn 7s; /* Fx 5+ */
+  -o-animation:      fadeIn 7s; /* Opera 12+ */
+  animation:         fadeIn 7s; /* IE 10+, Fx 29+ */
+  margin-left: 30vw;
+}
+
+.hero-buttons {
+  margin-top: 35vh;
+}

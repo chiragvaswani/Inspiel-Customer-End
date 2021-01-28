@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|ZCOOL+KuaiLe&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+
+/* #4ea10a-Color code */
+/* FUTURA-  Font */
+
+/* Loader styling */
+.loader {
+  position: relative;
+  height: 50px;
+  top: 200px;
+  animation: rotate 3s linear infinite;
+  transform-origin: bottom center;
+}
+
+.circle {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  transform: scale(0);
+  border-radius: 50%;
+  animation: grow 2s linear infinite;
+}
+
+.circle:nth-child(2) {
+  /* background-color: rgb(141, 250, 51); */
+  /* background-color: #4ea10a; */
+  background-color: #000;
+  animation-delay: 1s;
+}
+
+.tagline {
+  color: black;
+  position: relative;
+  font-size: 1em;
+  top: 350px;
+  width: 300px;
+  left: 20px;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+#t1 {
+  animation: fade 2.5s ease-in forwards;
+  opacity: 0;
+  animation-delay: 1s;
+  transition: opacity 2s ease-out;
+}
+
+#t2 {
+  animation: fade 2.5s ease-in forwards;
+  opacity: 0;
+  animation-delay: 2s;
+  transition: opacity 2s ease-out;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes grow {
+  50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

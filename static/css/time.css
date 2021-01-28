@@ -1,0 +1,27 @@
+.b{
+    margin-top: 20%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.button1{
+  font-family: sans-serif;
+  padding-left: 45px;
+  padding-right: 46px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 20px;
+  margin-top: 30px;
+  cursor: pointer;
+  border: 1px solid darkgreen;
+  border-width: medium;
+  color: darkgreen;
+  transition: 0.8s;
+  overflow: hidden;
+}
+
+input[type=button]:hover {
+  color: #fff;
+  background: darkgreen;
+  border-radius: 10% 40% 10% 40%;
+}

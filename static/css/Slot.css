@@ -1,0 +1,287 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+.y-appointment-wrapper {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.field-set-reset {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  min-width: 0;
+}
+fieldset legend.title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 50px;
+}
+.scroll-btn {
+  width: 3%;
+  height: 140px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+.scroll-btn.left {
+  margin-right: 2%;
+}
+.scroll-btn.right {
+  margin-left: 2%;
+}
+.scroll-img-wrap {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.date-pick {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 80px;
+}
+.date-pick .date-wrapper {
+  width: 88%;
+  display: inline-block;
+  height: 150px;
+  vertical-align: top;
+  text-align: center;
+  margin-left: 0;
+  margin-right: 0;
+}
+.date-pick .date-scroll-container {
+  white-space: nowrap;
+  overflow-x: scroll;
+  height: 150px;
+}
+.date-pick .date-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+.date-wrapper input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+.date-wrapper .timecell {
+  position: relative;
+  width: 20%;
+  display: inline-block;
+  box-sizing: border-box;
+  height: 140px;
+  cursor: pointer;
+}
+.date-wrapper .date-item {
+  display: block;
+  border: 1px solid #eee;
+  padding: 20px 0;
+}
+/*.timecell .fill-box {
+    border:1px solid #eee;
+    z-index:-1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}*/
+.timecell.selected .date-item {
+  border-color: #16c79a;
+  z-index: 1;
+}
+.timecell .time-day,
+.timecell .time-date,
+.timecell .time-month,
+.timecell .time-available {
+  display: block;
+}
+
+.time-day {
+  font-size: 15px;
+  line-height: 22px;
+}
+.time-date {
+  color: black;
+  font-size: 40px;
+  line-height: 48px;
+}
+.selected .time-date {
+  color: #16c79a;
+}
+.time-month {
+  font-size: 15px;
+  line-height: 22px;
+  color: #aaa;
+}
+
+.time-pick .time-slot {
+}
+.time-pick .time-slot.morning,
+.time-pick .time-slot.afternoon,
+.time-pick .time-slot.evening {
+  text-transform: uppercase;
+  float: left;
+  text-align: center;
+  box-sizing: border-box;
+}
+.time-pick .time-slot .slot-heading {
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  box-sizing: border-box;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #f7f7f7;
+  font-weight: 300;
+}
+.time-pick .time-slot.morning .slot-heading {
+  border-left: 1px solid #ccc;
+}
+.time-pick .time-slot.evening .slot-heading {
+  border-right: 1px solid #ccc;
+}
+.time-pick .time-slot.morning,
+.time-pick .time-slot.evening {
+  width: 33%;
+}
+.time-pick .time-slot.afternoon {
+  width: 33%;
+}
+.time-slot .slot input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+.time-slot .time-slice {
+  display: inline-block;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  font-weight: 300;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+.time-slice.selected {
+  border: 1px solid #16c79a !important;
+  color: #16c79a;
+}
+.time-slot.afternoon .time-slice {
+  /* width: calc(50% - 8px); */
+}
+@media all and (min-width: 300px) and (max-width: 768px) {
+  .y-appointment-wrapper {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  legend.title {
+    font-size: 20px;
+  }
+  .date-pick .date-wrapper {
+    width: 100%;
+  }
+  .date-wrapper .timecell {
+    width: 33%;
+  }
+  .scroll-btn {
+    display: none;
+  }
+  .time-slot {
+    width: 100% !important;
+    margin-bottom: 15px;
+  }
+  .time-slot .slot-heading {
+    border: 1px solid #ccc;
+  }
+  .time-slot .time-slice {
+    width: 100% !important;
+  }
+}
+
+.logo {
+  width: 200px;
+}
+
+.date-wrapper input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 150px;
+}
+
+.date-scroll-container {
+  height: 200px !important;
+}
+
+.y-appointment-wrapper {
+  padding-bottom: 40px;
+}
+
+.unavailable {
+  border-color: red;
+  z-index: 1;
+}
+
+input[type="checkbox"] {
+  z-index: -1;
+}
+
+.time-slice span {
+  z-index: -1;
+}
+
+.time-slot .time-slice {
+  display: inline-block;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  font-weight: 300;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.time-slice {
+  z-index: 100;
+}
+
+.disable {
+  /* background-color: red; */
+  cursor: default !important;
+  border: 1px solid #ff3800 !important;
+  color: #ff3800;
+  pointer-events: none;
+}

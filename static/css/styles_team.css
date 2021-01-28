@@ -1,0 +1,171 @@
+body {
+
+	font-family: 'Russo One', sans-serif;
+	background-color: #FFFFFF;
+}
+
+.all-content {
+
+	margin: 0%;
+	padding: 0%;
+	height: 2000px;
+	width: 100%;
+}
+
+/*About us*/
+
+.header {
+
+	height: 150px;
+	margin-top: 5%;
+	margin-bottom: 10%;
+}
+
+.header-two {
+
+	height: 150px;
+	padding-top: 30%;
+	margin-bottom: 10%;	
+	color: 
+}
+
+h2 {
+
+	font-family: 'Russo One', sans-serif;
+	font-size: 80px;
+	padding-left: 10%;
+	color:  rgb(104,185,23);
+	letter-spacing: 8px;
+	display: flex;
+	height: 70px;
+}
+
+.line {
+
+	position: relative;
+	top: 10%;
+	padding-left: 10%;
+	padding-bottom: 0%
+	width: 16em;
+	white-space: nowrap;
+	overflow: hidden; 
+	transform:translateY(-50%);
+	font-family: 'Russo One', sans-serif;
+	font-size: 30px;
+	color: #000000;
+	letter-spacing: 2px;
+}
+
+/* Typing Animation */
+.anim-typewriter {
+
+	animation: typewriter 3s steps(40) 1s 1 normal both,
+	blinkTextCursor 500ms steps(40) infinite normal;	
+}
+
+
+@keyframes typewriter {
+
+	from{ width: 0; }
+	to { width: 10em; }
+}
+
+@keyframes blinkTextCursor{
+	from { border-right-color: rgba(255,255,255,0.75); }
+	to { border-right-color: transparent; }	
+}
+
+/*About Us Closed*/
+
+.info {
+
+	padding-left: 10%;
+	padding-top: 4%;
+	padding-right: 10%;
+	color: #6E6E6E;
+	letter-spacing: 1px;	
+}
+
+/*Cards*/
+
+.column {
+
+	width: 25%;
+	float: left;
+	padding-left: 5.5%;
+	padding-right: 1%;
+}
+
+.row::after {
+
+	content: "";
+	display: table;
+	clear: both;
+}
+
+@media screen and(max-width: 600px) {
+
+	.column {
+		width: 100%;
+		display: block;
+		margin-bottom: 20px;
+	}
+}
+
+.card {
+
+	position: inherit;
+	box-shadow: 10px 10px 25px 0 rgba(0,0,0,0.2);
+	max-width: 450px;
+	margin: auto;
+	background-color: #000000;
+	text-align: center;
+	border-radius: 10px;
+	padding-bottom: 50px;
+	color: #FFFFFF;
+	letter-spacing: 3px;
+	padding-top: 20px;
+}
+
+.change {
+
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	right: 0;
+	background: #000000;
+	clip-path: circle(100px at 0 0);
+	transition: all 0.5s;
+}
+
+img {
+
+	border-radius: 50%;
+	padding-bottom: 20px;
+}
+
+.title {
+
+	color: #FFFFFF;
+	font-size: 18px;
+}
+
+a {
+
+	text-decoration: none;
+	font-size: 22px;
+	color: rgb(104,185,23);
+}
+
+a:hover,button:hover {
+
+	opacity: 0.6; 
+}
+
+.row2 {
+
+	margin-top: 38%;
+}
+
+/*Cards Closed*/
