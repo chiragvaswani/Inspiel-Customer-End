@@ -387,7 +387,38 @@ app.get("/slot", (req, res) => {
 
 app.post("/slot", (req, res) => {
   console.log("I'm here");
-  console.log(req.body);
+  var slots = req.body.slots;
+  console.log(typeof slots);
+  if (typeof slots == "string") {
+    console.log("I was here");
+    session.booking = [
+      {
+        startTime: {
+          hours: +slots.split("-")[0].split(":")[0],
+          minutes: +slots.split("-")[0].split(":")[1]
+        },
+        endTime: {
+          hours: +slots.split("-")[1].split(":")[0],
+          minutes: +slots.split("-")[1].split(":")[1]
+        }
+      }
+    ];
+  } else {
+    session.booking = [];
+    slots.forEach(slots =>
+      session.booking.push({
+        startTime: {
+          hours: +slots.split("-")[0].split(":")[0],
+          minutes: +slots.split("-")[0].split(":")[1]
+        },
+        endTime: {
+          hours: +slots.split("-")[1].split(":")[0],
+          minutes: +slots.split("-")[1].split(":")[1]
+        }
+      })
+    );
+  }
+  console.log("Session.obj: ", session.booking);
   res.send(req.body);
 });
 
