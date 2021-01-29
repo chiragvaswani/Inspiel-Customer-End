@@ -391,7 +391,7 @@ app.post("/slot", (req, res) => {
   var slots = req.body.slots;
   console.log(typeof slots);
   console.log(slots === undefined);
-  if (slots === undefined) res.redirect("/");
+  if (slots === undefined) res.send("Select something first");
   else {
     if (typeof slots == "string") {
       console.log("I was here");
@@ -439,11 +439,11 @@ app.post("/slot", (req, res) => {
         }
         console.log(data);
         console.log("Record Inserted Successfully");
-        res.render("index");
+        // res.render("index");
       });
     }
     // console.log("Session.bookings: ", session.booking);
-    res.render(cost * session.booking.length);
+    res.send(String(300 * session.booking.length));
   }
 });
 
