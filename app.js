@@ -390,57 +390,61 @@ app.post("/slot", (req, res) => {
   console.log("I'm here");
   var slots = req.body.slots;
   console.log(typeof slots);
-  if (typeof slots == "string") {
-    console.log("I was here");
-    session.booking = [
-      {
-        startTime: {
-          hours: +slots.split("-")[0].split(":")[0],
-          minutes: +slots.split("-")[0].split(":")[1]
-        },
-        endTime: {
-          hours: +slots.split("-")[1].split(":")[0],
-          minutes: +slots.split("-")[1].split(":")[1]
+  console.log(slots === undefined);
+  if (slots === undefined) res.redirect("/");
+  else {
+    if (typeof slots == "string") {
+      console.log("I was here");
+      session.booking = [
+        {
+          startTime: {
+            hours: +slots.split("-")[0].split(":")[0],
+            minutes: +slots.split("-")[0].split(":")[1]
+          },
+          endTime: {
+            hours: +slots.split("-")[1].split(":")[0],
+            minutes: +slots.split("-")[1].split(":")[1]
+          }
         }
-      }
-    ];
-  } else {
-    session.booking = [];
-    slots.forEach(slots =>
-      session.booking.push({
-        startTime: {
-          hours: +slots.split("-")[0].split(":")[0],
-          minutes: +slots.split("-")[0].split(":")[1]
-        },
-        endTime: {
-          hours: +slots.split("-")[1].split(":")[0],
-          minutes: +slots.split("-")[1].split(":")[1]
+      ];
+    } else {
+      session.booking = [];
+      slots.forEach(slots =>
+        session.booking.push({
+          startTime: {
+            hours: +slots.split("-")[0].split(":")[0],
+            minutes: +slots.split("-")[0].split(":")[1]
+          },
+          endTime: {
+            hours: +slots.split("-")[1].split(":")[0],
+            minutes: +slots.split("-")[1].split(":")[1]
+          }
+        })
+      );
+    }
+    console.log(session.date);
+    console.log(session.courtName);
+    for (var booking of session.booking) {
+      data = {
+        username: "5678",
+        date: session.date,
+        courtName: session.courtName,
+        ownerusername: "demowner",
+        slot: booking,
+        cost: 300
+      };
+      Booking.create(data, (err, data) => {
+        if (err) {
+          throw err;
         }
-      })
-    );
+        console.log(data);
+        console.log("Record Inserted Successfully");
+        res.render("index");
+      });
+    }
+    // console.log("Session.bookings: ", session.booking);
+    res.render(cost * session.booking.length);
   }
-  console.log(session.date);
-  console.log(session.courtName);
-  for (var booking of session.booking) {
-    data = {
-      username: "5678",
-      date: session.date,
-      courtName: session.courtName,
-      ownerusername: "demowner",
-      slot: booking,
-      cost: 300
-    };
-    Booking.create(data, (err, data) => {
-      if (err) {
-        throw err;
-      }
-      console.log(data);
-      console.log("Record Inserted Successfully");
-      res.render("index");
-    });
-  }
-  // console.log("Session.bookings: ", session.booking);
-  res.send(req.body);
 });
 
 app.post("/test", (req, res) => {
