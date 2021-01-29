@@ -288,6 +288,7 @@ app.post("/customer/court/:courtName/:sport", (req, res) => {
       // session.booked = data;
       // console.log("here");
       // console.log(session.booked);
+      session.date = date;
       Booking.find({ date: date }, (err, data) => {
         if (err) throw err;
         else {
@@ -418,7 +419,27 @@ app.post("/slot", (req, res) => {
       })
     );
   }
-  console.log("Session.obj: ", session.booking);
+  console.log(session.date);
+  console.log(session.courtName);
+  for (var booking of session.booking) {
+    data = {
+      username: "5678",
+      date: session.date,
+      courtName: session.courtName,
+      ownerusername: "demowner",
+      slot: booking,
+      cost: 300
+    };
+    Booking.create(data, (err, data) => {
+      if (err) {
+        throw err;
+      }
+      console.log(data);
+      console.log("Record Inserted Successfully");
+      res.render("index");
+    });
+  }
+  // console.log("Session.bookings: ", session.booking);
   res.send(req.body);
 });
 
