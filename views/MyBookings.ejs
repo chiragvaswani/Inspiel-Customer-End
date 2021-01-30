@@ -99,10 +99,10 @@
         <ul class="stack">
           <% for (var booking of past) { %>
           <li class="card past">
-            <time datetime="2020-10-20"><%= booking.date.toUTCString().slice(0, 16) %></time>
+            <time datetime="2020-10-20"><%= booking.date %></time>
             <div class="row">
               <div class="col-lg-4"><b style="color:darkgray;">Location</b><br><%= booking.courtName %></div>
-              <div class="col-lg-3"><b style="color:darkgray;">Slot<br></b><%= booking.slot %></div>
+              <div class="col-lg-3"><b style="color:darkgray;">Slot<br></b><%= booking.slot.startTime.hours %>:<%= String(booking.slot.startTime.minutes).padStart(2, "0") %>&nbsp;-&nbsp;<%= booking.slot.endTime.hours %>:<%= String(booking.slot.endTime.minutes).padStart(2, "0") %></div>
               <div class="col-lg-4"><b style="color:darkgray;">Cost<br></b> Rs. <%= booking.cost %></div>
             </div><br>
             <div class="id"><b style="color:darkgray;">Reservation ID: </b><b><%= booking._id %></b></div>

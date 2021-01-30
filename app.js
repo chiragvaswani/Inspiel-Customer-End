@@ -27,7 +27,6 @@ const Player = require("./static/js/PlayerSchema");
 const BookingCompare = require("./static/js/BookingsCompare");
 const Court = require("./static/js/CourtSchema");
 const BookingsCompare = require("./static/js/BookingsCompare");
-// import { BookingCompare } from "./static/js/BookingsCompare";
 
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useFindAndModify", false);
@@ -48,63 +47,64 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.post("/", (req, res) => {
-  const username = req.body.username;
-  const date = req.body.date;
-  const court = req.body.court;
-  const cost = req.body.cost;
-  const slot = req.body.slot;
+// app.post("/", (req, res) => {
+//   const username = req.body.username;
+//   const date = req.body.date;
+//   const court = req.body.court;
+//   const cost = req.body.cost;
+//   const slot = req.body.slot;
 
-  const data = {
-    username: username,
-    date: date,
-    courtName: court,
-    cost: cost,
-    slot: slot
-  };
+//   const data = {
+//     username: username,
+//     date: date,
+//     courtName: court,
+//     cost: cost,
+//     slot: slot
+//   };
 
-  Booking.create(data, (err, data) => {
-    if (err) {
-      throw err;
-    }
-    console.log(data);
-    console.log("Record Inserted Successfully");
-    res.render("index");
-  });
-});
+//   Booking.create(data, (err, data) => {
+//     if (err) {
+//       throw err;
+//     }
+//     console.log(data);
+//     console.log("Record Inserted Successfully");
+//     res.render("index");
+//   });
+// });
 
-app.get("/:courtName/", (req, res) => {
-  console.log("This place");
-  var date = new Date();
-  date = date.toLocaleDateString();
-  console.log("Today: " + date);
-  // var date = new Date().toLocaleDateString();
-  console.log(date);
-  const data = {
-    username: "test123",
-    date: date,
-    courtname: req.params.courtName,
-    ownerusername: "testOwner",
-    slot: {
-      startTime: {
-        hours: 9,
-        minutes: 0
-      },
-      endTime: {
-        hours: 10,
-        minutes: 0
-      }
-    },
-    cost: 300
-  };
+// Testing route
+// app.get("/:courtName/", (req, res) => {
+//   console.log("This place");
+//   var date = new Date();
+//   date = date.toLocaleDateString();
+//   console.log("Today: " + date);
+//   // var date = new Date().toLocaleDateString();
+//   console.log(date);
+//   const data = {
+//     username: "test123",
+//     date: date,
+//     courtname: req.params.courtName,
+//     ownerusername: "testOwner",
+//     slot: {
+//       startTime: {
+//         hours: 9,
+//         minutes: 0
+//       },
+//       endTime: {
+//         hours: 10,
+//         minutes: 0
+//       }
+//     },
+//     cost: 300
+//   };
 
-  Booking.create(data, (err, data) => {
-    if (err) throw err;
-    console.log(data);
-    console.log("Record added!");
-    res.send("Boom!");
-  });
-});
+//   Booking.create(data, (err, data) => {
+//     if (err) throw err;
+//     console.log(data);
+//     console.log("Record added!");
+//     res.send("Boom!");
+//   });
+// });
 
 app.get("/customer/login", (req, res) => {
   res.render("CustomerSignin", { message: "" });
@@ -181,14 +181,15 @@ app.post("/customer/signup", async (req, res) => {
 
 app.get("/customer/dashboard", (req, res) => {
   if (session.username == undefined) {
-    res.redirect("/");
+    res.redirect("/customer/login");
   } else {
     res.render("customer-dashboard", { firstName: session.firstName });
   }
 });
 
 app.get("/customer/profile", (req, res) => {
-  res.render("profile");
+  if (session.username == undefined) res.redirect("/customer/login");
+  else res.render("profile");
 });
 
 app.get("/customer/bookings", (req, res) => {
