@@ -193,73 +193,67 @@ app.get("/customer/profile", (req, res) => {
 });
 
 app.get("/customer/bookings", (req, res) => {
-  console.log("Session username in customer/bookings is: " + session.username);
-  Booking.find({ username: session.username }, (err, data) => {
-    if (err) {
-      throw err;
-    } else {
-      past = [];
-      upcoming = [];
-      for (var ob of data) {
-        if (ob.date >= Date.now()) {
-          upcoming.push(ob);
-        } else {
-          past.push(ob);
+  if (session.username == undefined) res.redirect("/customer/login");
+  else {
+    console.log(
+      "Session username in customer/bookings is: " + session.username
+    );
+    Booking.find({ username: session.username }, (err, data) => {
+      if (err) {
+        throw err;
+      } else {
+        past = [];
+        upcoming = [];
+        for (var ob of data) {
+          if (ob.date >= Date.now()) {
+            upcoming.push(ob);
+          } else {
+            past.push(ob);
+          }
         }
+        past.sort(BookingCompare);
+        upcoming.sort(BookingCompare);
+        console.log("Past bookings: ", past);
+        console.log("Upcoming bookings: ", upcoming);
+        console.log(data);
+        res.render("MyBookings", { past: past, upcoming: upcoming });
       }
-      // past = past.slice(0, past.length - 1); The session object was saved in the same collection as MyBookings but now I've removed it so this is no longer needed
-      past.sort(BookingCompare);
-      upcoming.sort(BookingCompare);
-      console.log("Past bookings: ", past);
-      console.log("Upcoming bookings: ", upcoming);
-      console.log(data);
-      // data = data.slice(0, data.length - 1);
-      // console.log(data);
-      res.render("MyBookings", { past: past, upcoming: upcoming });
-    }
-  });
+    });
+  }
 });
 
 app.get("/customer/court/", (req, res) => {
-  Court.find({ sport: req.query.sport }, (err, data) => {
-    if (err) throw err;
-    else {
-      res.render("Courts", { courts: data });
-    }
-  });
+  if (session.username === undefined) res.redirect("/customer/login");
+  else {
+    Court.find({ sport: req.query.sport }, (err, data) => {
+      if (err) throw err;
+      else {
+        res.render("Courts", { courts: data });
+      }
+    });
+  }
 });
 
 app.get("/customer/court/:courtName/:sport", (req, res) => {
+  if (session.username === undefined) res.redirect("/customer/login");
   Court.findOne(
     { name: req.params.courtName, sport: req.params.sport },
     (err, data) => {
       if (err) throw err;
       else {
         if (data != null) res.render("CourtDes", { court: data });
-        else res.send(data);
+        else {
+          // 404 page
+        }
         // Check this once
       }
     }
   );
 });
 
-// app.get("/:courtName/book", (req, res) => {
-//   session.date = req.body.date;
-//   session.courtName = req.params.courtName;
-//   res.json(date, courtName);
-// });
-
 app.post("/customer/court/:courtName/:sport", (req, res) => {
-  // console.log(req.body.date);
-  // var date = new Date(Date.parse(req.body.date));
-  // console.log("Date is " + date.toLocaleDateString());
-  // session.date = date;
-  // console.log(date.toLocaleDateString());
-  // console.log(session.date.toLocaleDateString());
   session.courtName = req.params.courtName;
-  // console.log(typeof session.courtName);
   var date = req.body.date;
-  var total = [];
   Court.findOne({ name: session.courtName }, (err, data) => {
     if (err) throw err;
     else {
@@ -281,14 +275,6 @@ app.post("/customer/court/:courtName/:sport", (req, res) => {
   Booking.find({ courtname: req.params.courtName }, (err, data) => {
     if (err) throw err;
     else {
-      // console.log(data[0].date.getTime());
-      // date.toLocaleDateString();
-      // console.log(data[0].date);
-      // console.log(date.toLocaleDateString().toString());
-      // console.log(date.toLocaleDateString() == data[0].date);
-      // session.booked = data;
-      // console.log("here");
-      // console.log(session.booked);
       session.date = date;
       Booking.find({ date: date }, (err, data) => {
         if (err) throw err;
@@ -329,12 +315,15 @@ app.post("/customer/court/:courtName/:sport", (req, res) => {
 });
 
 app.get("/book/123/", (req, res) => {
-  res.render("Slot", {
-    booked: session.booked,
-    morning: session.morning,
-    afternoon: session.afternoon,
-    evening: session.evening
-  });
+  if (session.morning == undefined) res.redirect("/customer/login");
+  else {
+    res.render("Slot", {
+      booked: session.booked,
+      morning: session.morning,
+      afternoon: session.afternoon,
+      evening: session.evening
+    });
+  }
 });
 
 app.get("/court/signup", (req, res) => {
