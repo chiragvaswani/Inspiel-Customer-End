@@ -241,10 +241,11 @@ app.get("/customer/court/:courtName/:sport", (req, res) => {
     (err, data) => {
       if (err) throw err;
       else {
+        console.log("here");
         if (data != null) res.render("CourtDes", { court: data });
-        else {
-          // 404 page
-        }
+        // else {
+        //   // 404 page
+        // }
         // Check this once
       }
     }
@@ -326,56 +327,54 @@ app.get("/book/123/", (req, res) => {
   }
 });
 
-app.get("/court/signup", (req, res) => {
-  res.sendFile(__dirname + "/form.html");
-});
+// Testing signup
+// app.get("/court/signup", (req, res) => {
+//   res.sendFile(__dirname + "/form.html");
+// });
 
-app.post("/court/signup", (req, res) => {
-  data = {
-    name: req.body.name,
-    sport: req.body.sport.toLowerCase(),
-    ownerusername: req.body.ownerusername,
-    address: {
-      flatno: req.body.flatno,
-      street: req.body.street,
-      city: req.body.city,
-      landmark: req.body.landmark
-    },
-    imagepath: "/css/bg_image.jpg",
-    slots: [
-      {
-        startTime: {
-          hours: 7,
-          minutes: 30
-        },
-        endTime: {
-          hours: 8,
-          minutes: 30
-        }
-      },
-      {
-        startTime: {
-          hours: 9,
-          minutes: 0
-        },
-        endTime: {
-          hours: 10,
-          minutes: 0
-        }
-      }
-    ]
-  };
-  Court.create(data, (err, data) => {
-    if (err) throw err;
-    else console.log("Court Added");
-  });
-  res.redirect("/court/signup");
-});
+// app.post("/court/signup", (req, res) => {
+//   data = {
+//     name: req.body.name,
+//     sport: req.body.sport.toLowerCase(),
+//     ownerusername: req.body.ownerusername,
+//     address: {
+//       flatno: req.body.flatno,
+//       street: req.body.street,
+//       city: req.body.city,
+//       landmark: req.body.landmark
+//     },
+//     imagepath: "/css/bg_image.jpg",
+//     slots: [
+//       {
+//         startTime: {
+//           hours: 7,
+//           minutes: 30
+//         },
+//         endTime: {
+//           hours: 8,
+//           minutes: 30
+//         }
+//       },
+//       {
+//         startTime: {
+//           hours: 9,
+//           minutes: 0
+//         },
+//         endTime: {
+//           hours: 10,
+//           minutes: 0
+//         }
+//       }
+//     ]
+//   };
+//   Court.create(data, (err, data) => {
+//     if (err) throw err;
+//     else console.log("Court Added");
+//   });
+//   res.redirect("/court/signup");
+// });
 
-app.get("/slot", (req, res) => {
-  res.render("Slot");
-});
-
+// Payment Gateway
 app.post("/slot", (req, res) => {
   console.log("I'm here");
   var slots = req.body.slots;
@@ -437,9 +436,8 @@ app.post("/slot", (req, res) => {
   }
 });
 
-app.post("/test", (req, res) => {
-  console.log(req.body);
-  res.send("done");
+app.get("/:x", (req, res) => {
+  res.redirect("/");
 });
 
 app.listen(3000, () => console.log("Running on port 3000"));
