@@ -27,6 +27,7 @@ const Player = require("./static/js/PlayerSchema");
 const BookingCompare = require("./static/js/BookingsCompare");
 const Court = require("./static/js/CourtSchema");
 const BookingsCompare = require("./static/js/BookingsCompare");
+const User = require("./static/js/OwnerSchema.js");
 
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useFindAndModify", false);
