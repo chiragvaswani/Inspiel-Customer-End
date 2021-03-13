@@ -487,6 +487,61 @@ app.get("/customer/bookings", (req, res) => {
   }
 });
 
+// Adding slots - court owner end
+app.all("/add_slot", async function (req, res) {
+  const user = await User.findOne({ email: session.email });
+
+  if (!user) {
+    return res.redirect("/owner/login");
+  }
+
+  const starthr = req.body.starthr;
+  const startmin = req.body.startmin;
+  const endhr = req.body.endhr;
+  const endmin = req.body.endmin;
+  const am = req.body.am;
+  const pm = req.body.pm;
+  console.log(starthr);
+
+  if (req.body.starthr != undefined) {
+    const slot = {
+      startTime: {
+        hours: starthr,
+        minutes: startmin,
+        am: am
+      },
+      endTime: {
+        hours: endhr,
+        minutes: endmin,
+        pm: pm
+      }
+    };
+
+    console.log(req.body.starthr);
+    console.log(slot);
+    user.slots = user.slots.concat(slot);
+
+    await user.save();
+  }
+
+  User.find(function (error, result) {
+    if (error) {
+      return res.json({
+        status: false,
+        message: "Fail..",
+        error: error
+      });
+    }
+    User.find({ email: session.email }, function (err, result) {
+      past = [];
+      for (var ob of result) {
+        past.push(ob.slots);
+      }
+      res.render("add_slots", { past: past[0] });
+    });
+  });
+});
+
 app.get("/customer/court/", (req, res) => {
   if (session.username === undefined) res.redirect("/customer/login");
   else {
