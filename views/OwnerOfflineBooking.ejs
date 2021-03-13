@@ -108,6 +108,7 @@
 
 
  <legend class="title">Select Date</legend>
+ <%= court.name %> <%= court.sport %>
   <form action="/customer/court/<%= court.name %>/<%= court.sport %>" method="POST">
     <input type="text" name="name">Name</input>
               <div class="date-pick"  data-selected-id=-1>

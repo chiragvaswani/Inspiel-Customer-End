@@ -260,12 +260,27 @@ app.post("/owner/signup", async (req, res) => {
         type: 1
       };
 
+      const courtData = {
+        name: data.court,
+        sport: data.sport,
+        ownerusername: data.username,
+        address: null,
+        imagepath: "/css/bg_image.jpg",
+        slots: []
+      };
+
       User.create(data, (err, data) => {
         if (err) {
           throw err;
         }
         console.log(data);
         console.log("Record Inserted Successfully");
+      });
+
+      Court.create(courtData, (err, data) => {
+        if (err) throw err;
+        console.log(data);
+        console.log("Court created successfully!");
       });
 
       return res.redirect("/owner/login");
@@ -765,7 +780,15 @@ app.post("/slot", (req, res) => {
 
 app.get("/offline", (req, res) => {
   if (session.email === undefined) res.redirect("/owner/login");
-  res.render("OwnerOfflineBooking");
+  console.log("Solaris" === "Solaris");
+  console.log("here: ", session.courtName);
+  Court.findOne({ name: session.courtName }, (err, data) => {
+    if (err) throw err;
+    else {
+      console.log("here: ", data);
+      res.render("OwnerOfflineBooking", { court: data });
+    }
+  });
 });
 
 // app.get("/:x", (req, res) => {
