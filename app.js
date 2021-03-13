@@ -760,6 +760,11 @@ app.post("/slot", (req, res) => {
   }
 });
 
+app.get("/offline", (req, res) => {
+  if (session.email === undefined) res.redirect("/owner/login");
+  res.render("OwnerOfflineBooking");
+});
+
 // app.get("/:x", (req, res) => {
 //   console.log("Hereerererere!");
 //   res.redirect("/");
