@@ -310,7 +310,7 @@ app.get("/dash", async (req, res) => {
 });
 
 // Endpoint to GET owner's profile
-app.get("/profile", async (req, res) => {
+app.get("/owner/profile", async (req, res) => {
   // console.log(username + " " + password);
 
   User.findOne({ email: session.email }, async (err, user) => {
