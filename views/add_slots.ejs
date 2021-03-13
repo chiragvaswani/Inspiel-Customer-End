@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="add_slots.css">
+
+    <link rel="stylesheet" href="tstyle.css">
+    <link rel="stylesheet" href="info.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <title>Add Slots</title>
+
+</head>
+<body>
+    <!-- Bootstrap include links -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+    <!-- Code for main website -->
+    <section class="main">    <!--Everything will be inside this-->
+        <!-- NavBar -->
+      <div class="container-fluid p-0 navbar-container">
+          <nav class="navbar navbar-expand-lg navbar-light navbar-trans top">
+              <div class="container">
+                <!-- <a class="navbar-brand" href="#"><img class="logo" src="css/logo.png"></a> -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                              <a class="nav-link " href="/dash">Home</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="booking form.html">View bookings</a>
+                            </li>
+                    <li class="nav-item">
+                              <a class="nav-link nl" href="/profile">Profile</a>
+                            </li>
+
+                    <li class="nav-item">
+                              <a class="nav-link" href="/">Log Out</a>
+                            </li>
+                    <!-- <li class="nav-item">
+                      <a class="nav-link" href="profile.html">Profile Demo</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="cards.html">Cards Demo</a>
+                    </li> -->
+                  </ul>
+                </div>
+              </div>
+          </nav>
+        
+
+      <!-- New Our Services Begins -->
+
+      <div class="pattern">
+
+      </div>
+
+
+
+<div class="section-second" >
+  <section style="background-image: url('download.svg'); background-repeat: none; z-index: 99000; background-attachment: fixed;">
+      <div class="container-fluid text-center py-3">
+        <div class="About"   style="align-items: center;">
+          <h1 style="color: #fff; ">Add Slots</h1>
+        </div>
+      </div>
+
+      
+<div class="card">
+ 
+  <div class="cr">
+    <div class="c">
+      <form action="/add_slot" method="POST">
+        <div class="" style="align-items: center;"><br>
+          <h3>Start Time</h3>
+          <div class="s">
+          <input type="number" name="starthr" placeholder="00" value="00" required>
+          <input type="number" name="startmin" placeholder="00" value="00" required>
+          <select class="" name="am">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div>
+        </div>
+    <br>
+        <div class="">
+          <h3>End Time</h3>
+          <div class="e">
+          <input type="number" name="endhr" placeholder="00" value="00" required>
+          <input type="number" name="endmin" placeholder="00" value="00" required>
+          <select class="" name="pm">
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div>
+        </div><br>
+        <button class="bu"><span>Submit</span></button><br><br>
+      </form>
+    </div>
+  </div>
+</div>
+
+    
+
+</section><br><br>
+</div>
+
+
+<section style="background-image: url('download.svg'); background-repeat: none; background-attachment: fixed;">
+    <div class="container-fluid text-center py-3">
+      <div class="About">
+        <h1 style="color: rgb(104, 185, 23);">Slots Added</h1>
+      </div>
+    </div>
+
+<br>
+<!-- Table starts-->
+<div id="container" >
+  <table id="table-1">
+    <thead id="header-fixed">
+        <tr style="align-items: center;"><th colspan="1" class="fth">Start Time</th><th class="sth">End Time</th></tr>
+    </thead>
+    <tbody >
+        
+  <% for (var slots of past) { %>
+    <tr>
+      <td><%= String(slots.startTime.hours).padStart(2,'0')%>:<%= String(slots.startTime.minutes).padStart(2,'0')%>  <%= slots.startTime.am%></td>
+    <td><%= String(slots.endTime.hours).padStart(2,'0')%>:<%= String(slots.endTime.minutes).padStart(2,'0')%>  <%= slots.endTime.pm%></td>
+  </tr>
+    <% } %>
+
+  
+    </tbody>
+  </table>
+</div>
+
+
+
+ <!-- Table ends-->
+<br><br><br> </section>
+       <div class="footer-copyright text-center py-2">© 2020 Copyright
+        <a href="#" style="text-decoration: none; color: inherit">Inspiel</a>
+      </div>
+   
+
+
+
+</body>
+</html>
