@@ -111,6 +111,8 @@ app.get("/customer/login", (req, res) => {
   res.render("CustomerSignin", { message: "" });
 });
 
+app.get("/owner/login", (req, res) => res.render("login"));
+
 app.get("/customer/signup", (req, res) => {
   res.render("CustomerSignup", { message: "" });
 });
