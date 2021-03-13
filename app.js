@@ -360,6 +360,103 @@ app.get("/customer/profile", (req, res) => {
   else res.render("profile");
 });
 
+// Endpoint for updating owner's info
+app.all(
+  "/update",
+
+  async (req, res) => {
+    User.findOne({ email: session.email }, async (err, user) => {
+      //  status codes -- 1 success, 2 not found, 3 incorrect password
+      if (user === null) {
+        return res.redirect("/owner/login"); // User not Found
+      }
+
+      const username = req.body.username;
+      const firstname = req.body.firstname;
+      const lastname = req.body.lastname;
+      const email = req.body.email;
+      const contact = req.body.contact;
+      const sport = req.body.sport;
+      const court = req.body.court;
+      const address = req.body.address;
+      const street = req.body.street;
+      const landmark = req.body.landmark;
+      const city = req.body.city;
+      const description = req.body.description;
+
+      User.update(
+        { email: email },
+        {
+          username: username,
+          firstname: firstname,
+          lastname: lastname,
+          contact: contact,
+          sport: sport,
+          court: court,
+          address: address,
+          street: street,
+          landmark: landmark,
+          city: city,
+          description: description
+        },
+        function (error, result) {
+          res.render("profile_owner", {
+            username: username,
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            contact: contact,
+            sport: sport,
+            court: court,
+            address: address,
+            street: street,
+            landmark: landmark,
+            city: city,
+            description: description
+          });
+        }
+      );
+    });
+  }
+);
+
+app.get("/edit", async (req, res) => {
+  // console.log(username + " " + password);
+
+  User.findOne({ email: session.email }, async (err, user) => {
+    //  status codes -- 1 success, 2 not found, 3 incorrect password
+    if (user === null) {
+      return res.redirect("/owner/login"); // User not Found
+    }
+
+    try {
+      // Login successful
+      if (await bcrypt.compare(session.password, user.password)) {
+        User.find({ email: session.username }, function (error, result) {
+          res.render("edit_profile", {
+            username: user.username,
+            firstname: user.firstname,
+            lastname: user.lastname,
+            email: user.email,
+            contact: user.contact,
+            sport: user.sport,
+            court: user.court,
+            address: user.address,
+            street: user.street,
+            landmark: user.landmark,
+            city: user.city,
+            description: user.description
+          });
+        });
+      } else {
+        return res.redirect("/owner/login");
+      } // Incorrect Password
+    } catch {
+      res.json({ status: -1 }); // unknown error
+    }
+  });
+});
+
 app.get("/customer/bookings", (req, res) => {
   if (session.username == undefined) res.redirect("/customer/login");
   else {
