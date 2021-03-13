@@ -263,7 +263,7 @@ app.post("/owner/signup", async (req, res) => {
 
       const courtData = {
         name: data.court,
-        sport: data.sport,
+        sport: data.sport.toLowerCase(),
         ownerusername: data.username,
         address: null,
         imagepath: "/css/bg_image.jpg",
