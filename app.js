@@ -509,8 +509,9 @@ app.get("/customer/bookings", (req, res) => {
 // Adding slots - court owner end
 app.all("/add_slot", async function (req, res) {
   const user = await User.findOne({ email: session.email });
+  const court = await Court.findOne({ name: session.courtName });
 
-  if (!user) {
+  if (!user || !court) {
     return res.redirect("/owner/login");
   }
 
@@ -539,7 +540,8 @@ app.all("/add_slot", async function (req, res) {
     console.log(req.body.starthr);
     console.log(slot);
     user.slots = user.slots.concat(slot);
-
+    court.slots = court.slots.concat(slot);
+    await court.save();
     await user.save();
   }
 
