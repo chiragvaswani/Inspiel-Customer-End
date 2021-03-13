@@ -184,6 +184,43 @@ app.post("/customer/signup", async (req, res) => {
   }
 });
 
+// Owner post requests for login and signup
+app.post("/owner/login", async (req, res) => {
+  session.email = req.body.inputEmail;
+  session.password = req.body.inputPassword;
+
+  // console.log(username + " " + password);
+
+  User.findOne({ email: session.email }, async (err, user) => {
+    //  status codes -- 1 success, 2 not found, 3 incorrect password
+    if (user === null) {
+      return res.redirect("/owner/login"); // User not Found
+    }
+
+    try {
+      // Login successful
+      if (await bcrypt.compare(session.password, user.password)) {
+        User.find({ email: session.username }, function (error, result) {
+          res.render("Owner Dashboard", {
+            username: user.username,
+            firstname: user.firstname,
+            lastname: user.lastname,
+            email: user.email,
+            contact: user.contact,
+            sport: user.sport,
+            court: user.court,
+            address: user.address
+          });
+        });
+      } else {
+        return res.redirect("/owner/login");
+      } // Incorrect Password
+    } catch {
+      res.json({ status: -1 }); // unknown error
+    }
+  });
+});
+
 app.get("/customer/dashboard", (req, res) => {
   if (session.username == undefined) {
     res.redirect("/customer/login");
