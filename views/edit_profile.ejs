@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile | Inspiel</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/OwnerSignup.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 main">
+          <form class="form" action="/update" method="post">
+            <div class="tab-header">
+              <div class="active">Edit Profile</div>
+            </div>
+            <div class="tab-content">
+              <div class="tab-body active">
+                <div class="form-element">
+                  <input
+                    name="username"
+                    type="text"
+                    placeholder="Username"
+                    value="<%= username%>"
+                    required
+                  />
+                </div>
+
+                <div class="form-element-1">
+                  <input
+                    name="firstname"
+                    type="text"
+                    placeholder="First Name"
+                    value="<%= firstname%>"
+                    required
+                  />
+                  <input
+                    name="lastname"
+                    type="text"
+                    placeholder="Last Name"
+                    value="<%= lastname%>"
+                    required
+                  />
+                </div>
+
+                <div class="form-element">
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    value="<%= email%>"
+                    required
+                  />
+                </div>
+
+                <div class="form-element-1">
+                  <input
+                    name="contact"
+                    type="number"
+                    placeholder="Contact Number"
+                    value="<%= contact%>"
+                    required
+                  />
+                  <input
+                    name="sport"
+                    type="text"
+                    placeholder="Sport"
+                    value="<%= sport%>"
+                    required
+                  />
+                </div>
+
+                <div class="form-element">
+                  <input
+                    name="court"
+                    type="text"
+                    placeholder="Court Name"
+                    value="<%= court%>"
+                    required
+                  />
+                </div>
+
+                <div class="form-element">
+                  <input
+                    name="address"
+                    rows="3"
+                    cols="20"
+                    placeholder="Address"
+                    value="<%= address%>"
+                    required
+                  />
+                </div>
+
+                <div class="form-element-1">
+                  <input
+                    name="street"
+                    type="text"
+                    placeholder="Street"
+                    value="<%= street%>"
+                    required
+                  />
+                  <input
+                    name="landmark"
+                    type="text"
+                    placeholder="Land Mark"
+                    value="<%= landmark%>"
+                    required
+                  />
+                </div>
+
+                <div class="form-element">
+                  <input
+                    name="city"
+                    type="text"
+                    placeholder="City"
+                    value="<%= city%>"
+                    required
+                  />
+                </div>
+                <div class="form-element">
+                  <input
+                    row="5"
+                    column="10"
+                    name="description"
+                    type="text"
+                    value="<%= description%>"
+                    placeholder="Description"
+                    required
+                  />
+                </div>
+                <div class="form-element">
+                  <button>Update</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+  </body>
+</html>
