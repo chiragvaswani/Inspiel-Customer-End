@@ -38,17 +38,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                              <a class="nav-link " href="/dash">Home</a>
+                              <a class="nav-link " href="/owner/dashboard">Home</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" href="booking form.html">View bookings</a>
                             </li>
                     <li class="nav-item">
-                              <a class="nav-link nl" href="/profile">Profile</a>
+                              <a class="nav-link nl" href="/owner/profile">Profile</a>
                             </li>
 
                     <li class="nav-item">
-                              <a class="nav-link" href="/">Log Out</a>
+                              <a class="nav-link" href="/owner/login">Log Out</a>
                             </li>
                     <!-- <li class="nav-item">
                       <a class="nav-link" href="profile.html">Profile Demo</a>
@@ -60,7 +60,7 @@
                 </div>
               </div>
           </nav>
-        
+
 
       <!-- New Our Services Begins -->
 
@@ -78,9 +78,9 @@
         </div>
       </div>
 
-      
+
 <div class="card">
- 
+
   <div class="cr">
     <div class="c">
       <form action="/add_slot" method="POST">
@@ -113,7 +113,7 @@
   </div>
 </div>
 
-    
+
 
 </section><br><br>
 </div>
@@ -134,7 +134,7 @@
         <tr style="align-items: center;"><th colspan="1" class="fth">Start Time</th><th class="sth">End Time</th></tr>
     </thead>
     <tbody >
-        
+
   <% for (var slots of past) { %>
     <tr>
       <td><%= String(slots.startTime.hours).padStart(2,'0')%>:<%= String(slots.startTime.minutes).padStart(2,'0')%>  <%= slots.startTime.am%></td>
@@ -142,7 +142,7 @@
   </tr>
     <% } %>
 
-  
+
     </tbody>
   </table>
 </div>
@@ -154,7 +154,7 @@
        <div class="footer-copyright text-center py-2">© 2020 Copyright
         <a href="#" style="text-decoration: none; color: inherit">Inspiel</a>
       </div>
-   
+
 
 
 
