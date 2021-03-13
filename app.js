@@ -113,6 +113,8 @@ app.get("/customer/login", (req, res) => {
 
 app.get("/owner/login", (req, res) => res.render("login"));
 
+app.get("/owner/signup", (req, res) => res.render("signup"));
+
 app.get("/customer/signup", (req, res) => {
   res.render("CustomerSignup", { message: "" });
 });
