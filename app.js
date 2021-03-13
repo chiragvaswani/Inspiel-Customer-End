@@ -221,6 +221,60 @@ app.post("/owner/login", async (req, res) => {
   });
 });
 
+app.post("/owner/signup", async (req, res) => {
+  const username = req.body.username;
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
+  const email = req.body.email;
+  const contact = req.body.contact;
+  const sport = req.body.sport;
+  const court = req.body.court;
+  const address = req.body.address;
+  const street = req.body.street;
+  const landmark = req.body.landmark;
+  const city = req.body.city;
+  const password = req.body.password;
+  const copassword = req.body.copassword;
+
+  if (password == copassword) {
+    try {
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      const data = {
+        username: username,
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        contact: contact,
+        sport: sport,
+        court: court,
+        address: address,
+        street: street,
+        landmark: landmark,
+        city: city,
+        password: hashedPassword,
+        type: 1
+      };
+
+      User.create(data, (err, data) => {
+        if (err) {
+          throw err;
+        }
+        console.log(data);
+        console.log("Record Inserted Successfully");
+      });
+
+      return res.redirect("/owner/login");
+    } catch {
+      console.log("Error in inserting record");
+    }
+  } else {
+    return res.json({
+      message: "Password error"
+    });
+  }
+});
+
 app.get("/customer/dashboard", (req, res) => {
   if (session.username == undefined) {
     res.redirect("/customer/login");
