@@ -43,6 +43,7 @@ db.on("error", () => console.log("Error in Connecting to Database"));
 db.once("open", () => console.log("Connected to Database"));
 
 app.get("/", (req, res) => {
+  delete session.courtName;
   delete session.username;
   delete session.firstName;
   console.log("here");
@@ -202,6 +203,8 @@ app.post("/owner/login", async (req, res) => {
       // Login successful
       if (await bcrypt.compare(session.password, user.password)) {
         User.find({ email: session.email }, function (error, result) {
+          session.courtName = user.court; // storing the court name in the session.2
+          console.log(user.court);
           res.render("Owner Dashboard", {
             username: user.username,
             firstname: user.firstname,
