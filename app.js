@@ -45,6 +45,7 @@ db.once("open", () => console.log("Connected to Database"));
 app.get("/", (req, res) => {
   delete session.username;
   delete session.firstName;
+  console.log("here");
   res.render("index");
 });
 
@@ -200,7 +201,7 @@ app.post("/owner/login", async (req, res) => {
     try {
       // Login successful
       if (await bcrypt.compare(session.password, user.password)) {
-        User.find({ email: session.username }, function (error, result) {
+        User.find({ email: session.email }, function (error, result) {
           res.render("Owner Dashboard", {
             username: user.username,
             firstname: user.firstname,
@@ -288,7 +289,7 @@ app.get("/owner/dashboard", async (req, res) => {
     try {
       // Login successful
       if (await bcrypt.compare(session.password, user.password)) {
-        User.find({ email: session.username }, function (error, result) {
+        User.find({ email: session.email }, function (error, result) {
           res.render("Owner Dashboard", {
             username: user.username,
             firstname: user.firstname,
@@ -322,7 +323,7 @@ app.get("/owner/profile", async (req, res) => {
     try {
       // Login successful
       if (await bcrypt.compare(session.password, user.password)) {
-        User.find({ email: session.username }, function (error, result) {
+        User.find({ email: session.email }, function (error, result) {
           res.render("profile_owner", {
             username: user.username,
             firstname: user.firstname,
@@ -348,7 +349,7 @@ app.get("/owner/profile", async (req, res) => {
 });
 
 app.get("/customer/dashboard", (req, res) => {
-  if (session.username == undefined) {
+  if (session.username === undefined) {
     res.redirect("/customer/login");
   } else {
     res.render("customer-dashboard", { firstName: session.firstName });
@@ -356,7 +357,7 @@ app.get("/customer/dashboard", (req, res) => {
 });
 
 app.get("/customer/profile", (req, res) => {
-  if (session.username == undefined) res.redirect("/customer/login");
+  if (session.username === undefined) res.redirect("/customer/login");
   else res.render("profile");
 });
 
@@ -432,7 +433,7 @@ app.get("/edit", async (req, res) => {
     try {
       // Login successful
       if (await bcrypt.compare(session.password, user.password)) {
-        User.find({ email: session.username }, function (error, result) {
+        User.find({ email: session.email }, function (error, result) {
           res.render("edit_profile", {
             username: user.username,
             firstname: user.firstname,
@@ -458,7 +459,7 @@ app.get("/edit", async (req, res) => {
 });
 
 app.get("/customer/bookings", (req, res) => {
-  if (session.username == undefined) res.redirect("/customer/login");
+  if (session.username === undefined) res.redirect("/customer/login");
   else {
     console.log(
       "Session username in customer/bookings is: " + session.username
@@ -542,10 +543,13 @@ app.all("/add_slot", async function (req, res) {
   });
 });
 
-app.get("/customer/court/", (req, res) => {
-  if (session.username === undefined) res.redirect("/customer/login");
-  else {
-    Court.find({ sport: req.query.sport }, (err, data) => {
+app.get("/customer/court/:sport", (req, res) => {
+  console.log("IN the req route", session.username);
+  if (session.username === undefined) {
+    console.log("I was here!");
+    res.redirect("/customer/login");
+  } else {
+    Court.find({ sport: req.params.sport }, (err, data) => {
       if (err) throw err;
       else {
         res.render("Courts", { courts: data });
@@ -756,8 +760,9 @@ app.post("/slot", (req, res) => {
   }
 });
 
-app.get("/:x", (req, res) => {
-  res.redirect("/");
-});
+// app.get("/:x", (req, res) => {
+//   console.log("Hereerererere!");
+//   res.redirect("/");
+// });
 
 app.listen(3000, () => console.log("Running on port 3000"));
