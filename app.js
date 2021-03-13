@@ -204,6 +204,7 @@ app.post("/owner/login", async (req, res) => {
       if (await bcrypt.compare(session.password, user.password)) {
         User.find({ email: session.email }, function (error, result) {
           session.courtName = user.court; // storing the court name in the session.2
+          session.ownerusername = user.username; // storing the username of the owner in the session.
           console.log(user.court);
           res.render("Owner Dashboard", {
             username: user.username,
@@ -515,10 +516,10 @@ app.all("/add_slot", async function (req, res) {
     return res.redirect("/owner/login");
   }
 
-  const starthr = req.body.starthr;
-  const startmin = req.body.startmin;
-  const endhr = req.body.endhr;
-  const endmin = req.body.endmin;
+  const starthr = +req.body.starthr;
+  const startmin = +req.body.startmin;
+  const endhr = +req.body.endhr;
+  const endmin = +req.body.endmin;
   const am = req.body.am;
   const pm = req.body.pm;
   console.log(starthr);
@@ -539,6 +540,20 @@ app.all("/add_slot", async function (req, res) {
 
     console.log(req.body.starthr);
     console.log(slot);
+    user.slots.map(s => {
+      console.log(s.startTime);
+      console.log(slot.startTime);
+      console.log(s.startTime === slot.startTime);
+      if (
+        (s.startTime.hours === slot.startTime.hours &&
+          s.startTime.minutes === slot.startTime.minutes) ||
+        (s.endTime.hours === slot.endTime.hours &&
+          s.endTime.minutes === slot.endTime.minutes)
+      ) {
+        console.log("Invalid slot. Please try again.");
+        res.redirect("/add_slot");
+      }
+    });
     user.slots = user.slots.concat(slot);
     court.slots = court.slots.concat(slot);
     await court.save();
@@ -759,10 +774,10 @@ app.post("/slot", (req, res) => {
     console.log(session.courtName);
     for (var booking of session.booking) {
       data = {
-        username: "5678",
+        username: "", // placeholder
         date: session.date,
         courtName: session.courtName,
-        ownerusername: "demowner",
+        ownerusername: session.ownerusername,
         slot: booking,
         cost: 300
       };
@@ -782,7 +797,6 @@ app.post("/slot", (req, res) => {
 
 app.get("/offline", (req, res) => {
   if (session.email === undefined) res.redirect("/owner/login");
-  console.log("Solaris" === "Solaris");
   console.log("here: ", session.courtName);
   Court.findOne({ name: session.courtName }, (err, data) => {
     if (err) throw err;
