@@ -282,7 +282,7 @@ app.get("/dash", async (req, res) => {
   User.findOne({ email: session.email }, async (err, user) => {
     //  status codes -- 1 success, 2 not found, 3 incorrect password
     if (user === null) {
-      return res.redirect("login.html"); // User not Found
+      return res.redirect("/owner/login"); // User not Found
     }
 
     try {
@@ -301,7 +301,45 @@ app.get("/dash", async (req, res) => {
           });
         });
       } else {
-        return res.redirect("login.html");
+        return res.redirect("/owner/login");
+      } // Incorrect Password
+    } catch {
+      res.json({ status: -1 }); // unknown error
+    }
+  });
+});
+
+// Endpoint to GET owner's profile
+app.get("/profile", async (req, res) => {
+  // console.log(username + " " + password);
+
+  User.findOne({ email: session.email }, async (err, user) => {
+    //  status codes -- 1 success, 2 not found, 3 incorrect password
+    if (user === null) {
+      return res.redirect("/owner/login"); // User not Found
+    }
+
+    try {
+      // Login successful
+      if (await bcrypt.compare(session.password, user.password)) {
+        User.find({ email: session.username }, function (error, result) {
+          res.render("profile_owner", {
+            username: user.username,
+            firstname: user.firstname,
+            lastname: user.lastname,
+            email: user.email,
+            contact: user.contact,
+            sport: user.sport,
+            court: user.court,
+            address: user.address,
+            street: user.street,
+            landmark: user.landmark,
+            city: user.city,
+            description: user.description
+          });
+        });
+      } else {
+        return res.redirect("/owner/login");
       } // Incorrect Password
     } catch {
       res.json({ status: -1 }); // unknown error
