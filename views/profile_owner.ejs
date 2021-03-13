@@ -1,0 +1,259 @@
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="../css/profile_owner.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="statsstyle.css">
+    <title>Owner Profile</title>
+</head>
+<body>
+
+  <!-- Bootstrap include links -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  <!-- Navbar Begins-->
+
+    <div class="container-fluid p-0 navbar-container">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-trans top">
+            <div class="container">
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                            <a class="nav-link " href="/owner/dashboard">Home</a>
+                          </li>
+
+                  <li class="nav-item">
+                            <a class="nav-link" href="booking form.html">View Bookings</a>
+                          </li>
+                          <li class="nav-item active">
+                            <a class="nav-link nl" href="/owner/profile">Profile</a>
+                          </li>
+                  <li class="nav-item">
+                            <a class="nav-link" href="/owner/login">Log Out</a>
+                          </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Navbar Ends -->
+
+  <div class="main-content">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <a class="h4 text-white text-uppercase d-none d-lg-inline-block">Owner Profile</a>
+      </div>
+    </nav>
+    <!-- Header -->
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 450px; background-image: url(https://cdn.newsapi.com.au/image/v1/83e4d2c353687fe3893c3fa577a689c4); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row" style="width: 100%;">
+          <div class="col-lg-7 col-md-10" style="width: 100%;">
+            <h1 class="display-2 text-white" style="width: 100%;">Hello, <%= username%>!</h1>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+      <div class="row">
+        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+          <div class="card card-profile shadow">
+            <div class="row justify-content-center">
+              <div class="col-lg-3 order-lg-2">
+                <div class="card-profile-image">
+                  <a href="#">
+                    <img src="https://demos.creative-tim.com/argon-dashboard/assets/img/theme/team-4.jpg" class="rounded-circle">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+              <div class="d-flex justify-content-between">
+                <!-- <a href="#" class="btn btn-sm btn-info mr-4">Connect</a> -->
+                <!-- <a href="#" class="btn btn-sm btn-default float-right">Message</a> -->
+              </div>
+            </div>
+            <div class="card-body pt-0 pt-md-4 radius">
+              <div class="row">
+                <div class="col">
+                  <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                    <div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <h3>
+                  <%= firstname%> <%= lastname%>
+                </h3>
+
+              </div>
+            </div>
+<br><br>
+            <div class="card-body pt-0 pt-md-4 radius">
+<br>
+                 <div class="slots"  ><h4 >  Add slots for your court!
+                    </h4></div>
+                    <a href="/add_slot">    <button class="bu"><span>Add</span></button></a><br><br>
+
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="col-xl-8 order-xl-1">
+          <div class="card bg-secondary shadow">
+            <div class="card-header bg-white border-0">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">My account</h3>
+                </div>
+                <div class="col-4 text-right">
+                  <a href="/edit" class="btn btn-sm btn-primary">Edit Profile</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+
+
+
+              <form>
+                <h1></h1>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-username">Username</label>
+                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="<%= username%>">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Email address</label>
+                        <input type="email" id="input-email" class="form-control form-control-alternative" value="<%= email%>" placeholder="Email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-first-name">First name</label>
+                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="<%= firstname%>">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-last-name">Last name</label>
+                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="<%= lastname%>">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-4">
+                <!-- Address -->
+                <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-address">Address</label>
+                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="<%= address%>" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-street">Street</label>
+                        <input id="input-street" class="form-control form-control-alternative" placeholder="Street" value="<%= street%>" type="text">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-mark">Land Mark</label>
+                        <input id="input-mark" class="form-control form-control-alternative" placeholder="Land Mark" value="<%= landmark%>" type="text">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-city">City</label>
+                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="<%= city%>">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-city">Contact Number</label>
+                        <input type="number" id="input-phone" class="form-control form-control-alternative" placeholder="Phone Number" value="<%= contact%>">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group focused">
+                        <label class="form-control-label" for="input-country">Sport</label>
+                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Sport" value="<%= sport%>">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Court</label>
+                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Court" value="<%= court%>">
+                      </div>
+                    </div>
+
+
+                      <div class="col-md-12">
+                        <div class="form-group focused">
+                          <label class="form-control-label" for="input-address" >Court Description</label>
+                          <input row="5" column="10" type="text" id="input-country" class="form-control form-control-alternative" placeholder="Description" value="<%= description%>">
+                        </div>
+                      </div>
+
+                  </div>
+                </div>
+
+                <hr class="my-4">
+                <!-- Description -->
+
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<br><br>
+         <div class="footer-copyright text-center py-2" style="background-color: #eee;">© 2020 Copyright
+          <a href="#" style="text-decoration: none; color: inherit">Inspiel</a>
+        </div>
+      </div>
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js'></script><script  src="statsscript.js"></script>
+
+</body>
+</html>
