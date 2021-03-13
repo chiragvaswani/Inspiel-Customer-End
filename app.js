@@ -276,7 +276,7 @@ app.post("/owner/signup", async (req, res) => {
 });
 
 // Endpoint to GET owner's dashboard
-app.get("/dash", async (req, res) => {
+app.get("/owner/dashboard", async (req, res) => {
   // console.log(username + " " + password);
 
   User.findOne({ email: session.email }, async (err, user) => {
