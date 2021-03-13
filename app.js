@@ -543,13 +543,13 @@ app.all("/add_slot", async function (req, res) {
   });
 });
 
-app.get("/customer/court/:sport", (req, res) => {
+app.get("/customer/court", (req, res) => {
   console.log("IN the req route", session.username);
   if (session.username === undefined) {
     console.log("I was here!");
     res.redirect("/customer/login");
   } else {
-    Court.find({ sport: req.params.sport }, (err, data) => {
+    Court.find({ sport: req.query.sport }, (err, data) => {
       if (err) throw err;
       else {
         res.render("Courts", { courts: data });
